@@ -1,0 +1,132 @@
+/* General Styling & Variables */
+:root {
+    --primary-color: #4A90E2; /* Blue */
+    --accent-color: #FFF5733; /* Orange/Red */
+    --board-color: #333;
+    --cell-border-color: #666;
+    --backgroundd-color: #f4f4f9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    padding: 20px;
+}
+
+header h1 {
+    color: var(--board-color);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+/* Game container and Status */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    max-width: 450px; /* Max width for the game area */
+}
+
+#status-message {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primarry -color);
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 40px;
+}
+
+/* --- Game Board Grid Layout --- */
+#gameboard {
+    display: grid;
+    /* Sets up a 3x3 grid with equal columns and rows */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    /* Keep the board square by setting aspect ratio */
+    aspect-ratio: 1 / 1;
+    background-color: var(--board-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+/* --- Individual Cell Styling --- */
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: bolder;
+    cursor: pointer;
+    color: white;
+    user-select: none; /* Prevent text selection on marks */
+    /* Create the grid lines using borders */
+    border: 4px solid var(--cell-border-color);
+}
+
+/* Remove unnecessary boorders for a cleaner look */
+/* Top row */
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) { border-top: none; }
+/* Bottom row */
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) { border-bottom: none; }
+/* Left column */
+.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) { border-left: none; }
+/* Right-column */
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) { border-right: none; }
+
+/* Hover Effect */
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Style for X and O marks */
+.cell.X {
+    color: var(--primary-color);
+}
+
+.cell.O {
+    color: var(--accent-color);
+}
+
+/* Game Over Styling (optional: to highlight a winning cell */
+.cell.win {
+    background-color: #2ecc71; /* Green highlight */
+    color: white;
+}
+
+/* --- Reset Button Styling --- */
+#reset-button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#reset-button:hover {
+    background-color: blue;
+}
